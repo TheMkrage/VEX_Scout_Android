@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:values="http://schemas.android.com/apk/res-auto">
+
+    <org.team3309.vexscout.CircleView android:background="#ccc" android:layout_width="match_parent"
+        android:layout_height="377dp" android:paddingLeft="20dp" android:paddingBottom="40dp"
+        values:circleColor="#ff0099"
+        values:circleLabel="Taco"
+        values:labelColor="#ffff66"
+        android:id="@+id/Circle" />
+
+</FrameLayout>

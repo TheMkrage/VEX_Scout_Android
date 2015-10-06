@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardUseCompatPadding="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_name"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <org.team3309.vexscout.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/card_name"
+            android:layout_alignEnd="@+id/card_name" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
