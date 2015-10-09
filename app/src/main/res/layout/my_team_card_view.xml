@@ -24,12 +24,14 @@
             android:layout_centerHorizontal="true" />
 
         <org.team3309.vexscout.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/view"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/card_name"
-            android:layout_alignEnd="@+id/card_name" />
+            card_view:circleInnerColor= "#ff0099"
+            card_view:circleOuterColor="#ccc45c"
+            card_view:circleTopLabel="Taco"
+            card_view:labelColor="#ffff66"
+             />
 
 
     </RelativeLayout>

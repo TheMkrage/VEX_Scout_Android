@@ -3,10 +3,7 @@ package org.team3309.vexscout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -16,9 +13,9 @@ import android.view.View;
 public class CircleView extends View {
 
     //circle and text colors
-    private int circleCol, labelCol;
+    private int circleOuterCol, circleInnerCol, labelCol;
     //label text
-    private String circleText = "DEF";
+    private String circleTopText = "DEF", circleBottomText = "";
     //paint for drawing custom vie
     private Paint circlePaint = new Paint();
 
@@ -41,8 +38,10 @@ public class CircleView extends View {
 
         try {
             //get the text and colors specified using the names in attrs.xml
-            circleText = a.getString(R.styleable.CircleView_circleLabel);
-            circleCol = a.getInteger(R.styleable.CircleView_circleColor, 0);
+            circleBottomText = a.getString(R.styleable.CircleView_circleBottomLabel);
+            circleTopText = a.getString(R.styleable.CircleView_circleTopLabel);
+            circleInnerCol = a.getInteger(R.styleable.CircleView_circleInnerColor, 0);
+            circleOuterCol = a.getInteger(R.styleable.CircleView_circleOuterColor, 0);
             labelCol = a.getInteger(R.styleable.CircleView_labelColor, 0);
         } finally {
             a.recycle();
@@ -66,23 +65,37 @@ public class CircleView extends View {
         circlePaint.setStyle(Paint.Style.FILL);
         circlePaint.setAntiAlias(true);
         //set the paint color using the circle color specified
-        circlePaint.setColor(circleCol);
+        circlePaint.setColor(circleOuterCol);
         canvas.drawCircle(viewWidthHalf, viewHeightHalf, radius, circlePaint);
+
+        circlePaint.setColor(circleInnerCol);
+        canvas.drawCircle(viewWidthHalf, viewHeightHalf, (float) (radius - (radius * 0.1)), circlePaint);
+
         //set the text color using the color specified
         circlePaint.setColor(labelCol);
         //set text properties
         circlePaint.setTextAlign(Paint.Align.CENTER);
-        circlePaint.setTextSize(50);
 
-        if(circleText == null) {
-            circleText = "3309B";
+
+        if(circleTopText == null) {
+            circleTopText = "3309B";
+        }
+
+        if(this.circleBottomText != null && !this.circleBottomText.isEmpty()) { // If there is a bottom text
+            circlePaint.setTextSize(50);
+            canvas.drawText(circleTopText, viewWidthHalf, viewHeightHalf, circlePaint);
+            circlePaint.setTextSize(40);
+            canvas.drawText(circleBottomText, viewWidthHalf, viewHeightHalf - 100, circlePaint);
+        }else {
+            circlePaint.setTextSize((int) (viewWidthHalf * .4));
+            canvas.drawText(circleTopText, viewWidthHalf, viewHeightHalf, circlePaint);
         }
         //draw the text using the string attribute and chosen properties
-        canvas.drawText(circleText, viewWidthHalf, viewHeightHalf, circlePaint);
+
     }
 
     public int getCircleColor() {
-        return circleCol;
+        return circleOuterCol;
     }
 
     public int getLabelColor() {
@@ -90,12 +103,12 @@ public class CircleView extends View {
     }
 
     public String getLabelText() {
-        return circleText;
+        return circleTopText;
     }
 
     public void setCircleColor(int newColor) {
         //update the instance variable
-        circleCol = newColor;
+        circleOuterCol = newColor;
         //redraw the view
         invalidate();
         requestLayout();
@@ -111,7 +124,7 @@ public class CircleView extends View {
 
     public void setLabelText(String newLabel) {
         //update the instance variable
-        circleText = newLabel;
+        circleTopText = newLabel;
         //redraw the view
         invalidate();
         requestLayout();

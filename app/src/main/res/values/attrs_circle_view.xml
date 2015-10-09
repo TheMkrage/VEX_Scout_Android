@@ -1,7 +1,9 @@
 <resources>
     <declare-styleable name="CircleView">
-        <attr name="circleColor" format="color" />
-        <attr name="circleLabel" format="string"></attr>
+        <attr name="circleOuterColor" format="color" />
+        <attr name="circleInnerColor" format="color" />
+        <attr name="circleTopLabel" format="string"></attr>
+        <attr name="circleBottomLabel" format="string"></attr>
         <attr name="labelColor" format="color"></attr>
     </declare-styleable>
 </resources>
