@@ -6,13 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.parse.GetCallback;
 import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +28,13 @@ public class MainMenu extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         view.setLayoutManager(layoutManager);
 
-        List<DataObject> list = new ArrayList<DataObject>();
-        list.add(new DataObject("HOWDY"));
-        list.add(new DataObject("PARTNER"));
-        list.add(new DataObject("THIS"));
-        list.add(new DataObject("IS"));
-        list.add(new DataObject("A"));
-        list.add(new DataObject("CARD"));
+        List<Team> list = new ArrayList<Team>();
+        list.add(new Team("HOWDY"));
+        list.add(new Team("PARTNER"));
+        list.add(new Team("THIS"));
+        list.add(new Team("IS"));
+        list.add(new Team("A"));
+        list.add(new Team("CARD"));
         CardAdapter adapter = new CardAdapter(list);
         view.setAdapter(adapter);
     }
@@ -71,4 +66,6 @@ public class MainMenu extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

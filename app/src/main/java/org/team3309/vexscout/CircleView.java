@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -82,10 +83,11 @@ public class CircleView extends View {
         }
 
         if(this.circleBottomText != null && !this.circleBottomText.isEmpty()) { // If there is a bottom text
+            //circlePaint.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Helvetica.otf"));
             circlePaint.setTextSize(50);
             canvas.drawText(circleTopText, viewWidthHalf, viewHeightHalf, circlePaint);
             circlePaint.setTextSize(40);
-            canvas.drawText(circleBottomText, viewWidthHalf, viewHeightHalf - 100, circlePaint);
+            canvas.drawText(circleBottomText, viewWidthHalf, viewHeightHalf + 50, circlePaint);
         }else {
             circlePaint.setTextSize((int) (viewWidthHalf * .4));
             canvas.drawText(circleTopText, viewWidthHalf, viewHeightHalf, circlePaint);

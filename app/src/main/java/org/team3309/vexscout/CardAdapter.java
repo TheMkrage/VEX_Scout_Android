@@ -14,27 +14,29 @@ import java.util.List;
  * Created by TheMkrage on 10/5/2015.
  */
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.SubViewHolder>{
-    List<DataObject> list;
-    public CardAdapter(List<DataObject> list) {
+    List<Team> list;
+    public CardAdapter(List<Team> list) {
         this.list = list;
     }
 
     public class SubViewHolder extends RecyclerView.ViewHolder implements View
             .OnClickListener {
         CardView cardView;
-        TextView name;
+        TextView record, highScore, events;
 
         SubViewHolder(View view) {
             super(view);
             Log.d("TEAG", "HELLO");
             cardView = (CardView) view.findViewById(R.id.card_view);
-            name = (TextView) view.findViewById(R.id.card_name);
+            record = (TextView) view.findViewById(R.id.record);
+            highScore = (TextView) view.findViewById(R.id.highScore);
+            events = (TextView) view.findViewById(R.id.events);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            String title = ((TextView) cardView.findViewById(R.id.card_name)).getText().toString();
+            String title = ((TextView) cardView.findViewById(R.id.cardTitle)).getText().toString();
             Log.d("TEAG", title);
         }
     }
@@ -47,7 +49,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.SubViewHolder>
 
     @Override
     public void onBindViewHolder(CardAdapter.SubViewHolder subViewHolder, int i) {
-        subViewHolder.name.setText(list.get(i).name);
+        subViewHolder.record.setText(list.get(i).name);
     }
 
     @Override
